@@ -1,8 +1,9 @@
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
 import Form from './Form/Form';
 import Filter from './Filter/Filter';
-import Contacts from './Contacts/Contacts';
+import Contacts from './Contacts/ContactsList';
+import { nanoid } from 'nanoid';
+
 import s from './App.module.css';
 
 export class App extends Component {
@@ -16,14 +17,17 @@ export class App extends Component {
     filter: '',
   };
   addContact = ({ name, number }) => {
-    const names = this.state.contacts.map(contact => contact.name);
-    if (names.indexOf(name) >= 0) {
+    const names = this.state.contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    // const names = this.state.contacts.map(contact => contact.name);
+    if (names) {
       alert(name + ' is already in contacts');
       return;
     }
     this.setState(prevState => {
       return {
-        contacts: [{ name, number, id: nanoid() }, ...prevState.contacts],
+        contacts: [...prevState.contacts, { name, number, id: nanoid() }],
       };
     });
   };
@@ -41,10 +45,6 @@ export class App extends Component {
     this.setState({ filter: e.currentTarget.value });
   };
 
-  reset = () => {
-    this.setState({ contacts: [], name: '', number: '' });
-  };
-
   getVisibleContacts = () => {
     let { filter, contacts } = this.state;
     const normalizeFilter = filter.toLowerCase();
@@ -52,10 +52,8 @@ export class App extends Component {
       contact.name.toLowerCase().includes(normalizeFilter)
     );
   };
-  loginInputId = nanoid();
-  render() {
-    // const { name, number } = this.state;
 
+  render() {
     return (
       <div className={s.container}>
         <h1> Phonebook</h1>

@@ -1,7 +1,7 @@
 .input {
   display: flex;
   padding-left: 45px;
-
+  margin: 10px auto;
   height: 40px;
   background-repeat: no-repeat;
   background-image: url('data:image/svg+xml,\

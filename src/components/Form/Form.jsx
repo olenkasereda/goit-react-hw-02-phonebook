@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
 import { PropTypes } from 'prop-types';
 import s from './Form.module.css';
 
@@ -7,7 +6,6 @@ class Form extends Component {
   state = {
     name: '',
     number: '',
-    id: nanoid(),
   };
 
   handleChange = evt => {
@@ -18,8 +16,7 @@ class Form extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     const { name, number } = this.state;
-    // this.props.onSubmit(this.state);
-    this.props.addContact({ name: name, number: number, id: nanoid() });
+    this.props.addContact({ name: name, number: number });
     this.reset();
   };
 

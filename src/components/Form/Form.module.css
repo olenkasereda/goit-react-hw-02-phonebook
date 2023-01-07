@@ -13,6 +13,7 @@
 
 .buttonAdd {
   max-width: max-content;
+  margin: 10px;
   max-height: 45px;
   line-height: 45px;
   border-radius: 45px;
