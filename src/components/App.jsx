@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import Form from './Form/Form';
-import Filter from './Filter/Filter';
-import Contacts from './Contacts/ContactsList';
+import Form from './Form';
+import Filter from './Filter';
+import ContactsList from './ContactsList';
 import { nanoid } from 'nanoid';
 
 import s from './App.module.css';
@@ -37,9 +37,6 @@ export class App extends Component {
     }));
   };
 
-  formSubmitHandler = data => {
-    console.log(data);
-  };
   onChangeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   };
@@ -58,7 +55,7 @@ export class App extends Component {
         <h1> Phonebook</h1>
         <Form addContact={this.addContact} />
         <Filter value={this.state.filter} onChange={this.onChangeFilter} />
-        <Contacts
+        <ContactsList
           contacts={this.getVisibleContacts()}
           onDelete={this.deleteContact}
         />
