@@ -20,7 +20,6 @@ export class App extends Component {
     const names = this.state.contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
-    // const names = this.state.contacts.map(contact => contact.name);
     if (names) {
       alert(name + ' is already in contacts');
       return;
@@ -32,9 +31,9 @@ export class App extends Component {
     });
   };
 
-  deleteContact = сontactId => {
+  deleteContact = contactId => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== сontactId),
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
 

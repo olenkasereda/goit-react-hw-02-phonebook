@@ -21,7 +21,7 @@ class Form extends Component {
   };
 
   reset = () => {
-    this.setState({ name: '', number: '', id: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
@@ -29,26 +29,24 @@ class Form extends Component {
 
     return (
       <form className={s.form} onSubmit={this.handleSubmit}>
-        <label htmlFor={this.id}>
+        <label>
           Name
           <input
             placeholder="Full name"
-            id={this.id}
             type="text"
             name="name"
             value={name}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            pattern="^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             onChange={this.handleChange}
           />
         </label>
 
-        <label htmlFor={this.id}>
+        <label>
           Number
           <input
             placeholder="Phone number: +380..."
-            id={this.id}
             type="tel"
             name="number"
             value={number}
@@ -60,7 +58,7 @@ class Form extends Component {
         </label>
         <br />
         <button className={s.buttonAdd} type="submit">
-          Add contact{' '}
+          Add contact
         </button>
       </form>
     );

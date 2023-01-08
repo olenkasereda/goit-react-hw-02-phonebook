@@ -5,7 +5,7 @@ import s from './ContactItem.module.css';
 const ContactItem = ({ name, number, id, onDelete }) => {
   return (
     <>
-      <li className={s.item} key={id}>
+      <li className={s.item}>
         <p>
           {name}: {number}
         </p>
